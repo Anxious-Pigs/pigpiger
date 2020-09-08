@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <inceptionYear>2012</inceptionYear>
+
+    <groupId>org.anxiouspig.pigpiger</groupId>
+    <artifactId>pigpiger</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>Pigpiger</name>
+    <prerequisites>
+        <maven>3.6.2</maven>
+    </prerequisites>
+
+    <scm>
+        <url>git@github.com:anxiouspig/pigpiger.git</url>
+        <connection>scm:git@github.com:anxiouspig/pigpiger.git</connection>
+        <developerConnection>scm:git@github.com:anxiouspig/pigpiger.git</developerConnection>
+        <tag>pigpiger-1.0.0</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>anxiouspig</id>
+            <name>Pigpiger</name>
+            <email>xuxuffcc@gmail.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <issueManagement>
+        <system>github</system>
+        <url>https://github.com/anxiouspig/pigpiger/issues</url>
+    </issueManagement>
+
+    <modules>
+        <module>core</module>
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+
+</project>
