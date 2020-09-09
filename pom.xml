@@ -7,7 +7,7 @@
     <inceptionYear>2012</inceptionYear>
 
     <groupId>org.anxiouspig.pigpiger</groupId>
-    <artifactId>pigpiger</artifactId>
+    <artifactId>pigpiger-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
@@ -26,7 +26,7 @@
     <developers>
         <developer>
             <id>anxiouspig</id>
-            <name>Pigpiger</name>
+            <name>anxiouspig</name>
             <email>xuxuffcc@gmail.com</email>
         </developer>
     </developers>
