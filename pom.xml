@@ -3,26 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <inceptionYear>2012</inceptionYear>
-
-    <groupId>org.anxiouspig.pigpiger</groupId>
+    <inceptionYear>2021</inceptionYear>
+    <groupId>org.anxiouspigs.pigpiger</groupId>
     <artifactId>pigpiger-parent</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-
+    <url>https://github.com/Anxious-Pigs/pigpiger</url>
     <name>Pigpiger</name>
-    <prerequisites>
-        <maven>3.6.2</maven>
-    </prerequisites>
-
+    <description>Distributed File System</description>
     <scm>
         <url>git@github.com:anxiouspig/pigpiger.git</url>
         <connection>scm:git@github.com:anxiouspig/pigpiger.git</connection>
         <developerConnection>scm:git@github.com:anxiouspig/pigpiger.git</developerConnection>
-        <tag>pigpiger-1.0.0</tag>
+        <tag>pigpiger-1.0.0-SNAPSHOT</tag>
     </scm>
-
     <developers>
         <developer>
             <id>anxiouspig</id>
@@ -30,7 +24,10 @@
             <email>xuxuffcc@gmail.com</email>
         </developer>
     </developers>
-
+    <organization>
+        <name>Anxious-Pigs</name>
+        <url>https://github.com/Anxious-Pigs</url>
+    </organization>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -38,7 +35,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
     <issueManagement>
         <system>github</system>
         <url>https://github.com/anxiouspig/pigpiger/issues</url>
@@ -46,7 +42,20 @@
 
     <modules>
         <module>core</module>
+        <module>client</module>
+        <module>example</module>
     </modules>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <plugins>
