@@ -4,23 +4,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <inceptionYear>2021</inceptionYear>
-    <groupId>org.anxiouspigs.pigpiger</groupId>
-    <artifactId>pigpiger-parent</artifactId>
+    <groupId>org.anxiouspigs.filepigger</groupId>
+    <artifactId>filepigger-parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <url>https://github.com/Anxious-Pigs/pigpiger</url>
-    <name>Pigpiger</name>
+    <url>https://github.com/Anxious-Pigs/filepigger</url>
+    <name>Filepigger</name>
     <description>Distributed File System</description>
     <scm>
-        <url>git@github.com:anxiouspig/pigpiger.git</url>
-        <connection>scm:git@github.com:anxiouspig/pigpiger.git</connection>
-        <developerConnection>scm:git@github.com:anxiouspig/pigpiger.git</developerConnection>
+        <url>git@github.com:Anxious-Pigs/filepigger.git</url>
+        <connection>scm:git@github.com:Anxious-Pigs/filepigger.git</connection>
+        <developerConnection>scm:git@github.com:Anxious-Pigs/filepigger.git</developerConnection>
         <tag>pigpiger-1.0.0-SNAPSHOT</tag>
     </scm>
     <developers>
         <developer>
             <id>anxiouspig</id>
-            <name>anxiouspig</name>
+            <name>XuFucheng</name>
             <email>xuxuffcc@gmail.com</email>
         </developer>
     </developers>
@@ -37,24 +37,24 @@
     </licenses>
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/anxiouspig/pigpiger/issues</url>
+        <url>https://github.com/Anxious-Pigs/filepigger/issues</url>
     </issueManagement>
 
     <modules>
         <module>core</module>
         <module>client</module>
         <module>example</module>
+        <module>name-server</module>
+        <module>data-server</module>
     </modules>
 
     <dependencies>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -72,6 +72,5 @@
 
         </plugins>
     </build>
-
 
 </project>
