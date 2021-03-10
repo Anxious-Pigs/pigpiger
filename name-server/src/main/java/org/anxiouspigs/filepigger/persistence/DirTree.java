@@ -13,7 +13,7 @@ public class DirTree implements TreeHandler {
         String path = fileNode.getDir();
         String[] paths = path.split("/");
         for (int i = 1; i < paths.length; i++) {
-            System.out.println(paths[i]);
+
         }
     }
 
