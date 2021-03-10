@@ -13,10 +13,10 @@ public class DirTreeTest extends TestCase {
     }
 
     public void testAdd() {
-        dirTree.add(new FileNode("/image/red"));
+        dirTree.addFileNode(new FileNode("/image/red/"));
     }
 
     public void testRemove() {
-        dirTree.remove();
+        dirTree.removeFileNode();
     }
 }

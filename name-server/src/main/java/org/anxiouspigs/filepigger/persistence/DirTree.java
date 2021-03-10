@@ -9,14 +9,21 @@ public class DirTree implements TreeHandler {
     }
 
     @Override
-    public void add(FileNode fileNode) {
+    public void addFileNode(FileNode fileNode) {
         String path = fileNode.getDir();
         String[] paths = path.split("/");
-        System.out.println(paths.length);
+        for (int i = 1; i < paths.length; i++) {
+            System.out.println(paths[i]);
+        }
     }
 
     @Override
-    public void remove() {
+    public FileNode getFileNode(String path) {
+        return null;
+    }
+
+    @Override
+    public void removeFileNode() {
 
     }
 }

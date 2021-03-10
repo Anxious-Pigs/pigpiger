@@ -6,5 +6,5 @@ public abstract class TreeNode {
 
     protected long nodeId;
     protected String nodeName;
-    protected List<TreeNode> nodeList;
+
 }
