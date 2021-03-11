@@ -5,6 +5,8 @@ public class FileNode extends TreeNode{
 
     public FileNode(String dir) {
         this.dir = dir;
+        this.nodeName = dir.substring(dir.lastIndexOf("/") + 1);
+        this.hash = this.nodeName.hashCode();
     }
 
     public String getDir() {
