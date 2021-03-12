@@ -1,17 +1,17 @@
-package org.anxiouspigs.filepigger.persistence;
+package org.anxiouspigs.filepigger.tree;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * DirTree for NameNode in memory
+ * DirTree for NameNode in memory.
  */
 public class DirTree implements TreeHandler {
 
     private TreeNode rootDirNode;
 
     /**
-     * Result type of dichotomy
+     * Result type of dichotomy.
      */
     private enum DichotomyResultEnum {
         FIND_HASH_NAME,
@@ -20,55 +20,63 @@ public class DirTree implements TreeHandler {
     }
 
     /**
-     *
+     * Create a instance.
      */
     public DirTree() {
-        this.rootDirNode = new DirNode("/", 0);
+        this.rootDirNode = new DirNode("/", "/");
     }
 
     /**
-     * @param fileNode
+     * @param treeNode {@link FileNode} or {@link DirNode}.
      */
     @Override
-    public void createFileNode(FileNode fileNode) {
-        String path = fileNode.getDir();
+    public void createFileOrDirNode(TreeNode treeNode) {
+        String path = treeNode.getDir();
         String[] paths = path.split("/");
         TreeNode presentNode = rootDirNode;
-        boolean isFile = false;
+        Boolean isFile = treeNode instanceof FileNode ? true : false;
+        boolean isLast = false;
+        StringBuilder dirBuilder = new StringBuilder();
         for (int i = 1; i < paths.length; i++) {
+            dirBuilder.append("/").append(paths[i]);
             if (i == paths.length - 1) {
-                isFile = true;
+                isLast = true;
             }
             String nodeName = paths[i];
-            int hash = nodeName.hashCode();
             List<TreeNode> childNodes = ((DirNode) presentNode).getChildNodeList();
             if (childNodes == null) {
                 childNodes = new ArrayList<>();
                 ((DirNode) presentNode).setChildNodeList(childNodes);
-                if (isFile) {
-                    childNodes.add(fileNode);
+                if (isLast) {
+                    childNodes.add(treeNode);
                     break;
                 }
-                DirNode dirNode = new DirNode(nodeName, hash);
+                DirNode dirNode = new DirNode(nodeName, dirBuilder.toString());
                 childNodes.add(dirNode);
                 presentNode = dirNode;
             } else {
                 DichotomyResult dichotomyResult =
-                        dichotomy(isFile, nodeName, nodeName.hashCode(), childNodes, 0, childNodes.size() - 1);
+                        dichotomy(isLast & isFile, nodeName, nodeName.hashCode(), childNodes, 0, childNodes.size() - 1);
                 if (dichotomyResult.getResult() == DichotomyResultEnum.FIND_HASH_NAME) {
-                    if (isFile) {
-                        System.out.println("文件已存在");
+                    if (isLast) {
+                        System.out.println("文件或目录已存在");
                         break;
                     }
                     presentNode = dichotomyResult.getTreeNode();
                 } else if (dichotomyResult.getResult() == DichotomyResultEnum.FIND_HASH) {
-
+                    if (isLast) {
+                        dichotomyResult.getTreeNode().setNextNode(treeNode);
+                        break;
+                    }
+                    presentNode = new DirNode(nodeName, dirBuilder.toString());
+                    dichotomyResult.getTreeNode().setNextNode(presentNode);
                 } else {
 
                 }
             }
 
         }
+        System.out.println();
     }
 
     @Override
@@ -81,7 +89,7 @@ public class DirTree implements TreeHandler {
      * @return
      */
     @Override
-    public FileNode getFileNode(String path) {
+    public FileNode getFileOrDirNode(String path) {
         return null;
     }
 
@@ -94,7 +102,7 @@ public class DirTree implements TreeHandler {
     }
 
     /**
-     * Hash dichotomization to find node
+     * Hash dichotomization to find node.
      *
      * @param nodeName
      * @param hash
@@ -132,12 +140,12 @@ public class DirTree implements TreeHandler {
     }
 
     /**
-     * Result of  dichotomy
+     * Result of  dichotomy.
      */
     private class DichotomyResult {
-        public Enum<DichotomyResultEnum> result;
-        public TreeNode treeNode;
-        public int index;
+        private Enum<DichotomyResultEnum> result;
+        private TreeNode treeNode;
+        private int index;
 
         public DichotomyResult(Enum result, TreeNode treeNode) {
             this.result = result;

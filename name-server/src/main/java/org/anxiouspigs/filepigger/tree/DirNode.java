@@ -1,4 +1,4 @@
-package org.anxiouspigs.filepigger.persistence;
+package org.anxiouspigs.filepigger.tree;
 
 import java.util.List;
 
@@ -6,9 +6,12 @@ public class DirNode extends TreeNode{
 
     protected List<TreeNode> childNodeList;
 
-    public DirNode(String nodeName, int hash) {
-        this.nodeName = nodeName;
-        this.hash = hash;
+    public DirNode(String nodeName, String dir) {
+        super(nodeName, dir);
+    }
+
+    public DirNode(String dir) {
+        super(dir.substring(dir.lastIndexOf("/") + 1), dir);
     }
 
     public List<TreeNode> getChildNodeList() {

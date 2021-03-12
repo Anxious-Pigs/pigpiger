@@ -1,6 +1,9 @@
 package org.anxiouspigs.filepigger.persistence;
 
 import junit.framework.TestCase;
+import org.anxiouspigs.filepigger.tree.DirNode;
+import org.anxiouspigs.filepigger.tree.DirTree;
+import org.anxiouspigs.filepigger.tree.FileNode;
 import org.junit.BeforeClass;
 
 public class DirTreeTest extends TestCase {
@@ -13,8 +16,8 @@ public class DirTreeTest extends TestCase {
     }
 
     public void testAddAndGetFileNode() {
-        dirTree.createFileNode(new FileNode("/image/red/red.jpg"));
-        dirTree.createFileNode(new FileNode("/image/red/red.jpg"));
+        dirTree.createFileOrDirNode(new FileNode("/image/red/red.jpg"));
+        dirTree.createFileOrDirNode(new DirNode("/image/red/red.jpg"));
     }
 
     public void testRemoveFileNode() {
