@@ -1,5 +1,8 @@
 package org.anxiouspigs.filepigger.tree;
 
+import org.anxiouspigs.filepigger.errors.FilepiggerException;
+import org.anxiouspigs.filepigger.errors.NodeAlreadyExistsException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +33,7 @@ public class DirTree implements TreeHandler {
      * @param treeNode {@link FileNode} or {@link DirNode}.
      */
     @Override
-    public void createFileOrDirNode(TreeNode treeNode) {
+    public void createFileOrDirNode(TreeNode treeNode) throws FilepiggerException {
         String path = treeNode.getDir();
         String[] paths = path.split("/");
         TreeNode presentNode = rootDirNode;
@@ -59,8 +62,7 @@ public class DirTree implements TreeHandler {
                         dichotomy(isLast & isFile, nodeName, nodeName.hashCode(), childNodes, 0, childNodes.size() - 1);
                 if (dichotomyResult.getResult() == DichotomyResultEnum.FIND_HASH_NAME) {
                     if (isLast) {
-                        System.out.println("文件或目录已存在");
-                        break;
+                        throw new NodeAlreadyExistsException("the node to be created already exists.");
                     }
                     presentNode = dichotomyResult.getTreeNode();
                 } else if (dichotomyResult.getResult() == DichotomyResultEnum.FIND_HASH) {
@@ -76,7 +78,6 @@ public class DirTree implements TreeHandler {
             }
 
         }
-        System.out.println();
     }
 
     @Override
